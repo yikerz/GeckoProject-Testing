@@ -13,9 +13,12 @@ public class HomePage {
 	
 	public static boolean isDisplayed(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlToBe(url));
-		String currentURL = driver.getCurrentUrl();
-		return (currentURL.equals(url));
+		try {
+			wait.until(ExpectedConditions.urlToBe(url));
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 	
 	public static WebElement logoutButton(WebDriver driver) {

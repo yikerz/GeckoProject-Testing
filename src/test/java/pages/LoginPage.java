@@ -29,15 +29,22 @@ public class LoginPage {
 	
 	public static boolean isDisplayed(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.urlToBe(url));
-		String currentURL = driver.getCurrentUrl();
-		return url.equals(currentURL);
+		try {
+			wait.until(ExpectedConditions.urlToBe(url));
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 	
 	public static WebElement incorrectLoginAlert(WebDriver driver) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		By alertLocator = By.xpath("//div[contains(text(), 'Incorrect')]");
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(alertLocator));
+	}
+
+	public static WebElement resetLinkText(WebDriver driver) {
+		return driver.findElement(By.linkText("Forgot password?"));
 	}
 	
 	
