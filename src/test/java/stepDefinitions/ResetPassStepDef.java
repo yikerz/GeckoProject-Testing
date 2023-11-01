@@ -18,13 +18,13 @@ public class ResetPassStepDef {
 	String code;
 	
 	@When("The link text {string} is clicked")
-	public void the_link_text_is_clicked(String string) throws InterruptedException {
-		LoginPage.resetLinkText(driver).click();
+	public void the_link_text_is_clicked(String linkText) throws InterruptedException {
+		LoginPage.linkText(driver, linkText).click();
 		Thread.sleep(sleepTime);
 	}
 
-	@Then("The site should navigate to {string} page")
-	public void the_site_should_navigate_to_page(String string) throws InterruptedException {
+	@Then("The site should navigate to reset-password page")
+	public void the_site_should_navigate_to_reset_page() throws InterruptedException {
 		assertTrue(ResetPage.isDisplayed(driver));
 		Thread.sleep(sleepTime);
 	}
@@ -35,50 +35,20 @@ public class ResetPassStepDef {
 		Thread.sleep(sleepTime);
 	}
 
-	@When("The {string} is clicked")
-	public void the_is_clicked(String string) throws InterruptedException {
+	@When("The Send Verification Code button is clicked")
+	public void the_send_code_button_is_clicked() throws InterruptedException {
 		ResetPage.sendCodeButton(driver).click();
 		Thread.sleep(sleepTime);
 	}
 
-	@Then("The {string} button should be displayed")
-	public void the_button_should_be_displayed(String string) {
+	@Then("The Reset Password button should be displayed")
+	public void the_reset_button_should_be_displayed() {
 		assertTrue(ResetPage.resetButton(driver).isDisplayed());
 	}
-	
-	@When("The user open a new window and nagivate to Gmail")
-	public void the_user_open_a_new_window_and_nagivate_to_gmail() throws InterruptedException {
-		driver4gmail = new ChromeDriver();
-		driver4gmail.get("https://mail.google.com");  
-		Thread.sleep(sleepTime);
-	}
-	
-	@When("Login with the email and password")
-	public void login_with_the_email_and_password() throws InterruptedException {
-	    GmailPage.emailField(driver4gmail).sendKeys("Yikerz.Testing@gmail.com");
-	    Thread.sleep(sleepTime);
-	    GmailPage.idNextButton(driver4gmail).click();
-	    Thread.sleep(sleepTime);
-	    GmailPage.passField(driver4gmail).sendKeys("");
-	    Thread.sleep(sleepTime);
-	    GmailPage.passNextButton(driver4gmail).click();
-	    Thread.sleep(sleepTime);
-	}
-
-	@Then("The user should receive a new email with a verification code")
-	public void the_user_should_receive_a_new_email_with_a_verification_code() throws InterruptedException {
-		String emailContent = GmailPage.emailContent(driver4gmail).getText();
-		code = emailContent.substring(emailContent.lastIndexOf(" ")+1);
-		GmailPage.hoverEmail(driver4gmail);
-		Thread.sleep(sleepTime);
-		GmailPage.deleteEmail(driver4gmail);
-		Thread.sleep(sleepTime);
-		driver4gmail.close();
-	}
-	
+		
 	@When("The user insert the code and new password {string}")
 	public void the_user_insert_the_code_and_new_password(String password) throws InterruptedException {
-		ResetPage.codeField(driver).sendKeys(code);
+		ResetPage.codeField(driver).sendKeys(CheckMailStepDef.code);
 		Thread.sleep(sleepTime);
 		ResetPage.passwordField(driver).sendKeys(password);
 		Thread.sleep(sleepTime);
@@ -86,8 +56,8 @@ public class ResetPassStepDef {
 		Thread.sleep(sleepTime);
 	}
 
-	@When("Click {string} button")
-	public void click_button(String string) {
+	@When("Click Reset Password button")
+	public void click_reset_button() {
 		ResetPage.resetButton(driver).click();
 	}
 		

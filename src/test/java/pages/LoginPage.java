@@ -43,8 +43,8 @@ public class LoginPage {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(alertLocator));
 	}
 
-	public static WebElement resetLinkText(WebDriver driver) {
-		return driver.findElement(By.linkText("Forgot password?"));
+	public static WebElement linkText(WebDriver driver, String text) {
+		return driver.findElement(By.linkText(text));
 	}
 	
 	

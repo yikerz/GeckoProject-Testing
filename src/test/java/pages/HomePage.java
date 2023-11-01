@@ -24,5 +24,9 @@ public class HomePage {
 	public static WebElement logoutButton(WebDriver driver) {
 		return driver.findElement(By.xpath("//button[text()='Logout']"));
 	}
+
+	public static WebElement idVerifyButton(WebDriver driver) {
+		return driver.findElement(By.xpath("//*[text()='ID Verification']"));
+	}
 	
 }

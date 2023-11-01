@@ -29,10 +29,10 @@ public class GmailPage {
 		return driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button"));
 	}
 	
-	public static WebElement emailContent(WebDriver driver) {
+	public static WebElement emailContent(WebDriver driver, String codeType) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(
-				By.xpath("//span[starts-with(text(),'Your password reset code is')]")));
+				By.xpath("//span[starts-with(text(),'Your " + codeType + " code is')]")));
 	}
 
 	
