@@ -14,5 +14,6 @@ Feature: ID Verification Functionalities
     Then The default row is not displayed
     When Add primary, secondary and tertiary documents
 		And Click submit button
-		Then "Your Application Submitted Successfully" is displayed
+		Then The success page should be displayed
+		And "Your Application Submitted Successfully" is displayed
 		And The MySQL database should be updated with the document information

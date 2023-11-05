@@ -3,6 +3,8 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Iterator;
+
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.Then;
@@ -40,25 +42,40 @@ public class IdVerificationStepDef {
 
 	@When("Add primary, secondary and tertiary documents")
 	public void add_primary_secondary_and_tertiary_documents() throws InterruptedException {
-		IdVerificationPage.addMoreButton(driver).click();
-		Thread.sleep(sleepTime);
-		IdVerificationPage.addMoreButton(driver).click();
-		Thread.sleep(sleepTime);
-		IdVerificationPage.addMoreButton(driver).click();
-		Thread.sleep(sleepTime);
-		IdVerificationPage.categoryDropDown(driver).click();
-		Thread.sleep(sleepTime);
+		int numLoop = 3;
+		for (int i = 1; i <= numLoop; i++) {
+			IdVerificationPage.addMoreButton(driver).click();
+			Thread.sleep(sleepTime);
+			IdVerificationPage.categoryDropDown(driver, i).click();
+			Thread.sleep(sleepTime);
+			IdVerificationPage.categoryOptions(driver, i).click();
+			Thread.sleep(sleepTime);
+			IdVerificationPage.docTypeDropDown(driver, i).click();
+			Thread.sleep(sleepTime);
+			IdVerificationPage.docTypeOptions(driver, 1).click();
+			Thread.sleep(sleepTime);
+			IdVerificationPage.fileInput(driver, i-1).sendKeys("C:/Users/Yik/eclipse-workspace/GeckoTesting/src/test/resources/VerificationDoc/doc"+i+".jpg");
+			Thread.sleep(sleepTime);
+			
+		}
 	}
 
 	@When("Click submit button")
-	public void click_submit_button() {
+	public void click_submit_button() throws InterruptedException {
 		IdVerificationPage.submitButton(driver).click();
+		Thread.sleep(sleepTime);		
+	}
+	
+	@Then("The success page should be displayed")
+	public void the_success_page_should_be_displayed() {
+		assertTrue(SuccessPage.isDisplayed(driver));
 	}
 
 	@Then("{string} is displayed")
-	public void is_displayed(String expectedMessage) {
+	public void is_displayed(String expectedMessage) throws InterruptedException {
 		String message = SuccessPage.successMessage(driver).getText();
 		assertEquals(expectedMessage, message);
+		Thread.sleep(sleepTime);		
 	}
 
 	@Then("The MySQL database should be updated with the document information")

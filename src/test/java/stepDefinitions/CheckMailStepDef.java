@@ -25,7 +25,7 @@ public class CheckMailStepDef {
 	    Thread.sleep(sleepTime);
 	    GmailPage.idNextButton(driver4gmail).click();
 	    Thread.sleep(sleepTime);
-	    GmailPage.passField(driver4gmail).sendKeys("g6Xc{Ov48'H");
+	    GmailPage.passField(driver4gmail).sendKeys("");
 	    Thread.sleep(sleepTime);
 	    GmailPage.passNextButton(driver4gmail).click();
 	    Thread.sleep(sleepTime);
