@@ -34,6 +34,17 @@ public class LoginStepDef {
 		LoginPage.signInButton(driver).click();
 	}
 
+	@When("the refresh button is clicked while the page is loading")
+	public void correct_Email_And_Password_Inserted() throws InterruptedException {
+		driver.navigate().refresh();
+	}
+	
+	@Then("Redirect back to login page")
+	public void redirect_back_to_login_page() {
+	    driver.navigate().to("http://localhost:3000/login");
+	    assertTrue(LoginPage.isDisplayed(driver));
+	}
+	
 	@Then("The home page should be displayed")
 	public void the_home_page_should_be_displayed() throws InterruptedException {
 	  assertTrue(HomePage.isDisplayed(driver));

@@ -23,3 +23,18 @@ Feature: Login functionalities
       | email                 | password      |
       | almaqdad55@gmail.com  | wrongPassword |
       | wrong_email@gmail.com | Password@1    |
+      
+	@LogInThenRefreshWhileLoading
+	Scenario Outline: Login with correct email and password and press refresh button when loading
+		Given A user access to the login page
+		When A "<email>" and "<password>" are inserted
+		And The sign in button is clicked
+		And the refresh button is clicked while the page is loading
+		Then Redirect back to login page
+		
+		Examples: 
+      | email                | password   |
+      | almaqdad55@gmail.com | Password@1 |
+  
+  @LogInWithEmptyFields
+  
