@@ -3,7 +3,7 @@ package stepDefinitions;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Iterator;
+import java.sql.SQLException;
 
 import org.openqa.selenium.WebDriver;
 
@@ -79,7 +79,10 @@ public class IdVerificationStepDef {
 	}
 
 	@Then("The MySQL database should be updated with the document information")
-	public void the_my_sql_database_should_be_updated_with_the_document_information() {
-
+	public void the_my_sql_database_should_be_updated_with_the_document_information() throws SQLException {
+		JdbcConnection jdbc = new JdbcConnection();
+		assertEquals(3, jdbc.getTableSize("useridverification_document"));
+		jdbc.emptyTable("useridverification_document");
+		jdbc.shutDown();
 	}
 }

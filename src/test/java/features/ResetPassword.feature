@@ -5,7 +5,7 @@ Feature: Reset Password functionalities
     Given A user access to the login page
     When The link text "Forgot password?" is clicked
     Then The site should navigate to reset-password page
-    When The user insert "Yikerz.Testing@gmail.com" in the Email field
+    When The user insert "Yikerz.Testing+1@gmail.com" in the Email field
     And The Send Verification Code button is clicked
     Then The site should navigate to reset-password page
     And The Reset Password button should be displayed

@@ -2,7 +2,7 @@ Feature: ID Verification Functionalities
 	
   Background: Login user
     Given A user access to the login page
-    When A "Yikerz.Testing@gmail.com" and "Testing@1" are inserted
+    When A "Yikerz.Testing+11@gmail.com" and "Testing@1" are inserted
     And The sign in button is clicked
 
 	@VerifyUserTest
