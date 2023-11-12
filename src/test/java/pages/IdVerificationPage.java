@@ -34,12 +34,33 @@ public class IdVerificationPage {
 		return driver.findElement(By.xpath("//button[text()='+ Add More']"));		
 	}
 
-	public static WebElement categoryDropDown(WebDriver driver) {
-		return driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/main/div/div/div/div[1]/table/tbody/tr[1]/th[1]/div/div/div"));	
+	public static WebElement categoryDropDown(WebDriver driver, int row) {
+		return driver.findElement(By.xpath("//*[@id='root']/div[2]/main/div/div/div/div[1]/table/tbody/tr["+row+"]/th[1]/div/div/div"));	
+	}
+	
+	public static WebElement categoryOptions(WebDriver driver, int optionIndex) {
+		return driver.findElement(By.xpath("//*[@id='menu-documentCategory']/div[3]/ul/li["+optionIndex+"]"));	
 	}
 
+	public static WebElement docTypeDropDown(WebDriver driver, int row) {
+		return driver.findElement(By.xpath("//*[@id='root']/div[2]/main/div/div/div/div[1]/table/tbody/tr["+row+"]/th[2]/div/div/div"));
+	}
+
+	public static WebElement docTypeOptions(WebDriver driver, int optionIndex) {
+		return driver.findElement(By.xpath("//*[@id='menu-documentType']/div[3]/ul/li["+optionIndex+"]"));	
+	}
+	
+	public static List<WebElement> uploadButtons(WebDriver driver) {
+		return driver.findElements(By.xpath("//span[text()='Upload']"));
+	}
+	
+	public static WebElement fileInput(WebDriver driver, int row) {
+		return driver.findElement(By.xpath("//*[@id='raised-button-file-"+row+"']"));		
+	}
+	
 	public static WebElement submitButton(WebDriver driver) {
 		return driver.findElement(By.xpath("//button[text()='Submit']"));
 	}
-	
+
+		
 }

@@ -2,7 +2,7 @@ Feature: ID Verification Functionalities
 	
   Background: Login user
     Given A user access to the login page
-    When A "Yikerz.Testing+1@gmail.com" and "Testing@1" are inserted
+    When A "Yikerz.Testing+11@gmail.com" and "Testing@1" are inserted
     And The sign in button is clicked
     
 	@VerifyUserTest
@@ -14,5 +14,6 @@ Feature: ID Verification Functionalities
     Then The default row is not displayed
     When Add primary, secondary and tertiary documents
 		And Click submit button
-		Then "Your Application Submitted Successfully" is displayed
+		Then The success page should be displayed
+		And "Your Application Submitted Successfully" is displayed
 		And The MySQL database should be updated with the document information
