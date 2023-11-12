@@ -13,6 +13,7 @@ public class WebDriverManager {
 	@Before
 	public void setUp() {
 		System.out.println("Testing...");
+		driver = new ChromeDriver();
 		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--disable-web-security");
@@ -25,6 +26,11 @@ public class WebDriverManager {
 	}
 	
 	public static WebDriver getDriver() {
+		return driver;
+	}
+	
+	public static WebDriver chenxiSetUp() {
+		driver = new ChromeDriver();
 		return driver;
 	}
 	

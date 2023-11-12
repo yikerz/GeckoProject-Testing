@@ -42,6 +42,12 @@ public class LoginPage {
 		By alertLocator = By.xpath("//div[contains(text(), 'Incorrect')]");
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(alertLocator));
 	}
+	
+	public static WebElement missingRequiredParameterAlert(WebDriver driver) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		By alertLocator = By.xpath("//div[contains(text(), 'Missing required parameter')]");
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(alertLocator));
+	}
 
 	public static WebElement linkText(WebDriver driver, String text) {
 		return driver.findElement(By.linkText(text));

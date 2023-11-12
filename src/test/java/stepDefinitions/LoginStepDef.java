@@ -34,6 +34,23 @@ public class LoginStepDef {
 		LoginPage.signInButton(driver).click();
 	}
 
+	@When("the refresh button is clicked while the page is loading")
+	public void correct_Email_And_Password_Inserted() throws InterruptedException {
+		driver.navigate().refresh();
+	}
+	
+	@When("A {string} is inserted")
+	public void password_inserted(String password) throws InterruptedException {
+		LoginPage.passwordField(driver).sendKeys(password);
+		Thread.sleep(sleepTime);
+	}
+	
+	@Then("Redirect back to login page")
+	public void redirect_back_to_login_page() {
+	    driver.navigate().to("http://localhost:3000/login");
+	    assertTrue(LoginPage.isDisplayed(driver));
+	}
+	
 	@Then("The home page should be displayed")
 	public void the_home_page_should_be_displayed() throws InterruptedException {
 	  assertTrue(HomePage.isDisplayed(driver));
@@ -50,6 +67,13 @@ public class LoginStepDef {
 		assertTrue(LoginPage.incorrectLoginAlert(driver).isDisplayed());
 		assertEquals(expectedAlert, LoginPage.incorrectLoginAlert(driver).getText());
 		Thread.sleep(sleepTime);		
+	}
+	
+	@Then("Alert with {string} is displayed for empty fields")
+	public void alert_with_missing_requirement_displayed(String expectedAlert) throws InterruptedException {
+		assertTrue(LoginPage.missingRequiredParameterAlert(driver).isDisplayed());
+		assertEquals(expectedAlert, LoginPage.missingRequiredParameterAlert(driver).getText());
+		Thread.sleep(sleepTime);
 	}
 	
 }

@@ -21,6 +21,7 @@ public class IdVerificationStepDef {
 	public void click_the_id_verification_on_the_nav_bar() throws InterruptedException {
 		HomePage.idVerifyButton(driver).click();
 		Thread.sleep(sleepTime);
+		
 	}
 
 	@Then("The ID verification page should be displayed")

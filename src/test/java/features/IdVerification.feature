@@ -4,7 +4,7 @@ Feature: ID Verification Functionalities
     Given A user access to the login page
     When A "Yikerz.Testing+11@gmail.com" and "Testing@1" are inserted
     And The sign in button is clicked
-
+    
 	@VerifyUserTest
   Scenario: Upload all document categories for verification
     Given A user is at the home page
