@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features = {"src/test/java/features"},
 		glue = {"stepDefinitions"},
-		tags = "@LogInWithUsernameAndEmptyPassword",
+		tags = "@VerifyUserTest",
 		plugin = {"pretty",
 							"html:target/testReports/report.html",
 							"json:target/testReports/report.json",

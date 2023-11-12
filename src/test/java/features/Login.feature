@@ -37,21 +37,23 @@ Feature: Login functionalities
       | almaqdad55@gmail.com | Password@1 |
   
   @LogInWithBothEmptyFields
-  Scenario Outline: Click on the login button with empty fields
+  Scenario: Click on the login button with empty fields
 		Given A user access to the login page
 		When The sign in button is clicked
 		Then Alert with "Missing required parameter USERNAME" is displayed for empty fields
 	
 	@LogInWithEmptyUsernameAndAPassword
-	Scenario Outline: Login with empty username field and a password (correct or incorrect)
+	Scenario: Login with empty username field and a password (correct or incorrect)
 		Given A user access to the login page
 		When A "<password>" is inserted
 		And The sign in button is clicked
 		Then Alert with "Missing required parameter USERNAME" is displayed for empty fields
 	
 	@LogInWithUsernameAndEmptyPassword
-	Scenario Outline: Login with username (correct or incorrect) and empty password
+	Scenario: Login with username (correct or incorrect) and empty password
 		Given A user access to the login page
 		When A "<email>" is inserted
 		And The sign in button is clicked
 		Then Alert with "Missing required parameter PASSWORD" is displayed for empty fields
+		
+#	only use scenario outline if you have a table to pass in, otherwise use Scenario	
